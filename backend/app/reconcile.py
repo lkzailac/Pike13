@@ -111,33 +111,31 @@ def build_dancer_events() -> list[CalendarEvent]:
             )
         )
 
-    # 3. Dress Rehearsal - match enrollment + show to the dancer's on-stage slot.
-    rehearsal_slot = next(
-        (
-            s
-            for s in get_dress_rehearsal_slots()
-            if s["show"] == show_assignment["show"] and _same_class(enrollment, s)
-        ),
-        None,
-    )
-    if rehearsal_slot:
+    # 3. Dress Rehearsal - one combined class can perform multiple numbers, each
+    # with its own on-stage call time, so match ALL rows, not just the first.
+    rehearsal_slots = [
+        s
+        for s in get_dress_rehearsal_slots()
+        if s["show"] == show_assignment["show"] and _same_class(enrollment, s)
+    ]
+    for slot in rehearsal_slots:
         rule = arrival_rules["dress_rehearsal"]
-        arrival = _subtract_minutes(rehearsal_slot["onstage_start"], rule["offset_minutes"])
+        arrival = _subtract_minutes(slot["onstage_start"], rule["offset_minutes"])
         events.append(
             CalendarEvent(
-                id="dress-rehearsal",
-                title=f"Dress Rehearsal - {show_assignment['show']} show",
-                date=rehearsal_slot["rehearsal_date"],
-                listed_time=rehearsal_slot["onstage_start"],
+                id=f"dress-rehearsal-{slot['dance_style'].lower()}",
+                title=f"Dress Rehearsal - {slot['dance_style']} (\"{slot['song_title']}\")",
+                date=slot["rehearsal_date"],
+                listed_time=slot["onstage_start"],
                 arrival_time=arrival,
                 arrival_basis=(
-                    f"On-stage rehearsal slot is {rehearsal_slot['onstage_start']}-"
-                    f"{rehearsal_slot['onstage_end']} (matched by show + class day/time "
-                    f"against the Show Order/Dress Rehearsal grid). {rule['basis_text']} "
-                    f"=> arrive by {arrival}."
+                    f"Row {slot['row']} of the Show Order/Dress Rehearsal grid: "
+                    f"{slot['dance_style']} number \"{slot['song_title']}\", on-stage "
+                    f"{slot['onstage_start']}-{slot['onstage_end']} (matched by show + "
+                    f"class day/time). {rule['basis_text']} => arrive by {arrival}."
                 ),
                 location="Landmark Theater - Artist Entrance, West Jefferson St, Syracuse, NY",
-                source_doc=rehearsal_slot["source_doc"],
+                source_doc=slot["source_doc"],
                 duration_minutes=5,
             )
         )

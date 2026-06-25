@@ -26,7 +26,11 @@ def get_studio_address(location_hint: str) -> str:
 
 
 def get_dancer_enrollment() -> dict:
-    """Stands in for extraction from 'Screenshot ... 2.03.05 PM.png' (Enrollment table)."""
+    """Stands in for extraction from 'Screenshot ... 2.03.05 PM.png' (Enrollment table).
+
+    This is one combined weekly class (Ballet+Tap together), but it performs as
+    two separate numbers in the recital - see get_dress_rehearsal_slots().
+    """
     return {
         "first_name": "Colette",
         "last_name": "Cloherty",
@@ -80,21 +84,43 @@ def get_photo_day_slots() -> list[dict]:
 
 
 def get_dress_rehearsal_slots() -> list[dict]:
-    """Stands in for extraction from 'Screenshot ... 1.59.12 PM.png' (Show Order / Dress Rehearsal grid)."""
+    """Stands in for extraction from 'Screenshot ... 1.59.12 PM.png' (Show Order / Dress Rehearsal grid).
+
+    Colette's single combined Ballet/Tap class performs as two separate
+    numbers in the DREAM show (row 7 and row 20 of the grid), each with its
+    own on-stage call time, so each gets its own dress rehearsal slot here.
+    """
     return [
         {
             "show": "DREAM",
-            "rehearsal_date": "2026-06-20",
-            "studio": "Fall/Spring Syracuse 25-26",
-            "class_name": "Mini PreK Ballet/Tap Tues.",
+            "row": 7,
+            "studio": "Fall/Spring Skaneateles 25-26",
+            "class_name": "Mini PreK Ballet Tues.",
+            "dance_style": "Ballet",
             "class_day": "Tuesday",
             "class_time": "17:15",
             "teacher": "Grace",
+            "song_title": "Ma Belle Evangeline",
+            "rehearsal_date": "2026-06-20",
             "onstage_start": "18:03",
             "onstage_end": "18:08",
             "source_doc": "Screenshot 2026-06-25 at 1.59.12 PM.png",
         },
-        # ... other classes' rows omitted for this prototype; only Colette's class matters.
+        {
+            "show": "DREAM",
+            "row": 20,
+            "studio": "Fall/Spring Skaneateles 25-26",
+            "class_name": "Mini PreK Tap Tues.",
+            "dance_style": "Tap",
+            "class_day": "Tuesday",
+            "class_time": "17:15",
+            "teacher": "Grace",
+            "song_title": "Almost There",
+            "rehearsal_date": "2026-06-20",
+            "onstage_start": "19:00",
+            "onstage_end": "19:05",
+            "source_doc": "Screenshot 2026-06-25 at 1.59.12 PM.png",
+        },
     ]
 
 
