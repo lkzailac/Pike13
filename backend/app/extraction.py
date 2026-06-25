@@ -30,11 +30,13 @@ def get_dancer_enrollment() -> dict:
 
 
 def get_show_assignment() -> dict:
-    """Stands in for extraction from 'Untitled document.pdf'."""
+    """Stands in for extraction from 'Colette is in the DREAM show - update.pdf'."""
     return {
         "dancer_first_name": "Colette",
         "show": "DREAM",
-        "source_doc": "Untitled document.pdf",
+        "class_season_start": "2026-01-02",
+        "class_season_end": "2026-06-21",  # through recital day
+        "source_doc": "Colette is in the DREAM show - update.pdf",
     }
 
 
