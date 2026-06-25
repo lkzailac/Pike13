@@ -12,6 +12,18 @@ Each function notes which file in context/ it stands in for, so swapping in
 a real `anthropic` client call later is a localized change.
 """
 
+_STUDIO_ADDRESSES = {
+    "skaneateles": "1351 E Genesee St, Skaneateles, NY 13152",
+}
+
+
+def get_studio_address(location_hint: str) -> str:
+    """Resolve a studio location reference (e.g. 'Studio 2-Skan', 'SKANEATELES') to a street address."""
+    hint = location_hint.lower()
+    if "skan" in hint:
+        return _STUDIO_ADDRESSES["skaneateles"]
+    raise ValueError(f"No known address for studio location: {location_hint!r}")
+
 
 def get_dancer_enrollment() -> dict:
     """Stands in for extraction from 'Screenshot ... 2.03.05 PM.png' (Enrollment table)."""
@@ -23,7 +35,7 @@ def get_dancer_enrollment() -> dict:
         "class_day": "Tuesday",
         "start_time": "17:15",
         "length_minutes": 40,
-        "location": "Studio 2-Skan",
+        "location": get_studio_address("Studio 2-Skan"),
         "instructor": "Grace Mayer",
         "source_doc": "Screenshot 2026-06-25 at 2.03.05 PM.png",
     }
@@ -60,7 +72,7 @@ def get_photo_day_slots() -> list[dict]:
             "photo_slot_start": "13:50",
             "photo_slot_end": "14:00",
             "date": "2026-05-03",
-            "location": "Skaneateles",
+            "location": get_studio_address("SKANEATELES"),
             "source_doc": "Screenshot 2026-06-25 at 1.59.48 PM.png",
         },
         # ... other classes' rows omitted for this prototype; only Colette's class matters.
