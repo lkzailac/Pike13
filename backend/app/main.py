@@ -25,5 +25,5 @@ def get_ics():
     return Response(
         content=ics_bytes,
         media_type="text/calendar",
-        headers={"Content-Disposition": "attachment; filename=colette-dance-calendar.ics"},
+        headers={"Content-Disposition": "attachment; filename=Catherine-dance-calendar.ics"},
     )

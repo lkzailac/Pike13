@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import CalendarView, { MonthGroup } from "@/components/CalendarView";
 import { fetchDancerEvents, icsDownloadUrl } from "@/lib/api";
 import { expandRecurrence } from "@/lib/expand";
@@ -50,24 +52,37 @@ export default async function Home() {
 
   return (
     <div className="flex h-screen flex-col bg-zinc-50 dark:bg-black">
-      <header className="shrink-0 border-b border-zinc-200 bg-zinc-50 px-6 py-6 dark:border-zinc-800 dark:bg-black">
-        <div className="mx-auto max-w-2xl">
-          <h1 className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
-            Colette&apos;s Dance Calendar
+      <header className="shrink-0 border-b border-zinc-200 bg-zinc-50 py-6 dark:border-zinc-800 dark:bg-black">
+        <div className="relative flex items-center px-6">
+          <Image
+            src="/logo.png"
+            alt="Studio logo"
+            width={204}
+            height={40}
+            className="h-10 w-auto shrink-0"
+            priority
+          />
+          <h1 className="absolute inset-x-0 text-center text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
+            Catherine&apos;s Calendar
           </h1>
+        </div>
+
+        <div className="mx-auto flex max-w-2xl justify-end px-6">
           <a
             href={icsDownloadUrl()}
-            className="mt-4 inline-flex w-fit items-center justify-center rounded-full bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-violet-700"
+            className="mt-3 inline-flex w-fit items-center justify-center rounded-full bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-violet-700"
           >
             Add All Events to Your Calendar (.ics)
           </a>
+        </div>
 
-          {loadError && (
+        {loadError && (
+          <div className="mx-auto max-w-2xl px-6">
             <p className="mt-4 rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-700 dark:border-red-900 dark:bg-red-950 dark:text-red-300">
               {loadError}
             </p>
-          )}
-        </div>
+          </div>
+        )}
       </header>
 
       {!loadError && <CalendarView groups={groups} />}

@@ -10,6 +10,6 @@ export const studioEvents: StudioEvent[] = [
     title: "Reverie tickets go on sale",
     date: "2026-05-04",
     time: "10:00",
-    note: "Ticketmaster - studio-wide info, not specific to Colette's schedule.",
+    note: "Ticketmaster - studio-wide info, not specific to Catherine's schedule.",
   },
 ];

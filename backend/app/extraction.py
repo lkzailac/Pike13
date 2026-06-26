@@ -32,7 +32,7 @@ def get_dancer_enrollment() -> dict:
     two separate numbers in the recital - see get_dress_rehearsal_slots().
     """
     return {
-        "first_name": "Colette",
+        "first_name": "Catherine",
         "last_name": "Cloherty",
         "season": "Fall/Spring Skaneateles 25-26",
         "class_name": "Mini PreK Ballet/Tap Tues.",
@@ -47,13 +47,13 @@ def get_dancer_enrollment() -> dict:
 
 
 def get_show_assignment() -> dict:
-    """Stands in for extraction from 'Colette is in the DREAM show - update.pdf'."""
+    """Stands in for extraction from 'Catherine is in the DREAM show - update.pdf'."""
     return {
-        "dancer_first_name": "Colette",
+        "dancer_first_name": "Catherine",
         "show": "DREAM",
         "class_season_start": "2026-01-02",
         "class_season_end": "2026-06-21",  # through recital day
-        "source_doc": "Colette is in the DREAM show - update.pdf",
+        "source_doc": "Catherine is in the DREAM show - update.pdf",
     }
 
 
@@ -80,14 +80,14 @@ def get_photo_day_slots() -> list[dict]:
             "location": get_studio_address("SKANEATELES"),
             "source_doc": "Screenshot 2026-06-25 at 1.59.48 PM.png",
         },
-        # ... other classes' rows omitted for this prototype; only Colette's class matters.
+        # ... other classes' rows omitted for this prototype; only Catherine's class matters.
     ]
 
 
 def get_dress_rehearsal_slots() -> list[dict]:
     """Stands in for extraction from 'Screenshot ... 1.59.12 PM.png' (Show Order / Dress Rehearsal grid).
 
-    Colette's single combined Ballet/Tap class performs as two separate
+    Catherine's single combined Ballet/Tap class performs as two separate
     numbers in the DREAM show (row 7 and row 20 of the grid), each with its
     own on-stage call time, so each gets its own dress rehearsal slot here.
     """

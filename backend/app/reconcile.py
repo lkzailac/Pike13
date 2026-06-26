@@ -154,7 +154,7 @@ def build_dancer_events() -> list[CalendarEvent]:
                 listed_time=show["showtime"],
                 arrival_time=arrival,
                 arrival_basis=(
-                    f"Colette is assigned to the {show_assignment['show']} show "
+                    f"Catherine is assigned to the {show_assignment['show']} show "
                     f"({show_assignment['source_doc']}), showtime {show['showtime']}. "
                     f"{rule['basis_text']} => arrive by {arrival}. (Note: the email's "
                     "\"doors open 40 min prior\" rule is for ticketed audience members, "
