@@ -71,14 +71,15 @@ def build_dancer_events() -> list[CalendarEvent]:
     events.append(
         CalendarEvent(
             id="weekly-class",
-            title=f"{enrollment['class_name']} ({enrollment['instructor']})",
+            title=enrollment["class_style_name"],
             date=first_class_date,
             listed_time=enrollment["start_time"],
             arrival_time=enrollment["start_time"],
             arrival_basis=(
-                "Weekly class start time per enrollment record - no arrival buffer "
-                f"specified in source material. Season runs {first_class_date} to "
-                f"{last_class_date} per {show_assignment['source_doc']}."
+                f"Weekly class start time per enrollment record (instructor: "
+                f"{enrollment['instructor']}) - no arrival buffer specified in source "
+                f"material. Season runs {first_class_date} to {last_class_date} per "
+                f"{show_assignment['source_doc']}."
             ),
             location=enrollment["location"],
             source_doc=enrollment["source_doc"],

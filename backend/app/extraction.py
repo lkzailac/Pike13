@@ -36,6 +36,7 @@ def get_dancer_enrollment() -> dict:
         "last_name": "Cloherty",
         "season": "Fall/Spring Skaneateles 25-26",
         "class_name": "Mini PreK Ballet/Tap Tues.",
+        "class_style_name": "Mini PreK Ballet/Tap",  # class_name without the day suffix, for display
         "class_day": "Tuesday",
         "start_time": "17:15",
         "length_minutes": 40,

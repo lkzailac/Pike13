@@ -55,16 +55,11 @@ export default async function Home() {
           <h1 className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-zinc-50">
             Colette&apos;s Dance Calendar
           </h1>
-          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-            Every date below is when Colette actually needs to be there - not
-            just the time printed on the flyer.
-          </p>
-
           <a
             href={icsDownloadUrl()}
             className="mt-4 inline-flex w-fit items-center justify-center rounded-full bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-violet-700"
           >
-            Add to Calendar (.ics)
+            Add All Events to Your Calendar (.ics)
           </a>
 
           {loadError && (

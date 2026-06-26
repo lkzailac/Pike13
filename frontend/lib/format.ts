@@ -9,14 +9,19 @@ export function formatDate(dateStr: string): string {
   });
 }
 
+// Matches the informal weekday abbreviations used in the source class names
+// (e.g. "Mini PreK Ballet/Tap Tues."), rather than Intl's "Tue".
+const WEEKDAYS_SHORT = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
 export function formatShortDate(dateStr: string): string {
   const [y, m, d] = dateStr.split("-").map(Number);
   const date = new Date(y, m - 1, d);
-  return date.toLocaleDateString("en-US", {
+  const monthDay = date.toLocaleDateString("en-US", {
     month: "short",
     day: "numeric",
     year: "numeric",
   });
+  return `${WEEKDAYS_SHORT[date.getDay()]} ${monthDay}`;
 }
 
 export function formatTime(timeStr: string): string {
