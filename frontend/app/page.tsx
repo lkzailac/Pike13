@@ -67,7 +67,7 @@ export default async function Home() {
           </h1>
         </div>
 
-        <div className="mx-auto flex max-w-2xl justify-end px-6">
+        <div className="flex justify-center px-6">
           <a
             href={icsDownloadUrl()}
             className="mt-3 inline-flex w-fit items-center justify-center rounded-full bg-violet-600 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-violet-700"
