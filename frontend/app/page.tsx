@@ -58,7 +58,7 @@ export default function HomePage() {
       </header>
 
       {/* Hero */}
-      <section className="bg-gradient-to-b from-violet-50 to-white py-14 dark:from-violet-950/20 dark:to-zinc-950">
+      <section className="bg-linear-to-b from-violet-50 to-white py-14 dark:from-violet-950/20 dark:to-zinc-950">
         <div className="mx-auto max-w-7xl px-6">
           <p className="text-xs font-semibold uppercase tracking-widest text-violet-500">
             Spring / Summer 2026
